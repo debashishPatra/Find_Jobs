@@ -1,0 +1,17 @@
+INSERT IGNORE INTO categories (name, description) VALUES
+('Carpenter', 'Woodwork, furniture, doors, windows'),
+('Mistri (Mason)', 'Bricklaying, plastering, construction work'),
+('Plumber', 'Pipe fitting, leak repair, bathroom fittings'),
+('Electrician', 'Wiring, switchboards, electrical repair'),
+('Painter', 'Wall painting, interior and exterior'),
+('Driver', 'Car / commercial vehicle driver'),
+('Software Engineer', 'Web, mobile and software development'),
+('Welder', 'Metal fabrication and welding work'),
+('Gardener', 'Landscaping and garden maintenance'),
+('House Help', 'Domestic and household assistance'),
+('Mall Staff', 'Retail, mall and store staff'),
+('Shop Keeper', 'Shop attendant and store management'),
+('Teacher', 'Tuition, coaching and private teaching'),
+('Cab Driver (Auto)', 'Auto-rickshaw ride service'),
+('Cab Driver (Car)', 'Car cab / taxi ride service'),
+('Cab Driver (Bike)', 'Bike taxi ride service');
