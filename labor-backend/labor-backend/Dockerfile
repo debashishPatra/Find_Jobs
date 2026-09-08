@@ -10,11 +10,10 @@ FROM eclipse-temurin:8-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
-# Inform the platform routing layer of our fallback target port
-EXPOSE 8080
+# Open port 10000 inside the container environment
+EXPOSE 10000
 
-# SAFE ARBITRARY ENTRYPOINT: Pulls system arguments cleanly
-ENTRYPOINT ["java", "-jar", "app.jar"]
-
+# CRITICAL FIX: The shell wrapper forces Java to inject Render's PORT variable at runtime
+ENTRYPOINT ["sh", "-c", "java -Dserverport=${PORT} -Dserveraddress=0.0.0.0 -jar appjar"]
 
 
