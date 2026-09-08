@@ -1,14 +1,24 @@
-# Build stage
-FROM maven:3.8-openjdk-8-slim AS build
+# Step 1: Build stage using Maven and Java 8 (Temurin)
+FROM maven:3.8.8-eclipse-temurin-8 AS build
 WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+
+# Copy the pom.xml and source code from the labor-backend root
+COPY pom.xml . 
 COPY src ./src
+
+# Build the jar file
 RUN mvn clean package -DskipTests
 
-# Run stage
-FROM openjdk:8-jre-slim
+# Step 2: Runtime stage using a lightweight Java 8 JRE (Temurin)
+FROM eclipse-temurin:8-jre-alpine
 WORKDIR /app
-COPY --from=build /app/target/labor-registration.jar app.jar
+
+# Copy the compiled jar from the build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose the application port
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Run the spring boot application
+ENTRYPOINT ["java", "-jar", "appjar"]
+
