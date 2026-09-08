@@ -13,7 +13,7 @@ COPY --from=build /app/target/*.jar app.jar
 # Open port 10000 inside the container environment
 EXPOSE 10000
 
-# CRITICAL FIX: The shell wrapper forces Java to inject Render's PORT variable at runtime
-ENTRYPOINT ["sh", "-c", "java -Dserverport=${PORT} -Dserveraddress=0.0.0.0 -jar appjar"]
+# CRITICAL FIX: Ensure appjar is corrected to app.jar (with a dot)
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT} -Dserver.address=0.0.0.0 -jar app.jar"]
 
 
