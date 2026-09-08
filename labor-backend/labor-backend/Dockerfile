@@ -10,10 +10,11 @@ FROM eclipse-temurin:8-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
-# Dynamically fall back to 8080 if PORT environment variable isn't present
+# Explicitly open a communication channel inside the container setup
 EXPOSE 8080
 
-# CRITICAL FIX: Pass the dynamic Render port variable straight into Spring Boot
-ENTRYPOINT ["java", "-Dserver.port=${PORT:8080}", "-jar", "app.jar"]
+# CRITICAL REWRITE: Force Java to evaluate the dynamic system environment port directly
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT} -Dserver.address=0.0.0.0 -jar app.jar"]
+
 
 
