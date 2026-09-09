@@ -7,7 +7,11 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Run stage
-FROM openjdk:8-jre-slim
+# Replace the deprecated openjdk image with this stable version
+FROM eclipse-temurin:8-jre-alpine
+
+# The rest of your Dockerfile configurations (WORKDIR, COPY, ENTRYPOINT, etc.) remain the same...
+
 WORKDIR /app
 COPY --from=build /app/target/labor-registration.jar app.jar
 EXPOSE 8080
