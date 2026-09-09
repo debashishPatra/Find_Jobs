@@ -3,7 +3,7 @@ import api from '../api/axiosConfig';
 import { useAuth } from '../context/AuthContext';
 
 export default function MyAccount() {
-  const { user, refreshUser } = useAuth();
+  const { refreshUser } = useAuth();
   const [form, setForm] = useState({ fullName: '', phone: '' });
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
