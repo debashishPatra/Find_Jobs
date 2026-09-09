@@ -36,7 +36,9 @@ export default function Workers() {
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => { loadWorkers(); /* eslint-disable-next-line */ }, [categoryId, availableOnly, location]);
+  useEffect(() => {
+  loadWorkers();
+}, [categoryId, availableOnly, location, loadWorkers]); 
 
   const handleBookClick = (worker) => {
     if (!user) {
