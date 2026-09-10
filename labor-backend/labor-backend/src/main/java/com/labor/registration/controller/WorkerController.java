@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "https://find-job-search-a9ztqbrna-findjob1.vercel.app", allowCredentials = "true")    
 @RequestMapping("/api/workers")
 @RequiredArgsConstructor
 public class WorkerController {
