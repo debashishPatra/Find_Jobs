@@ -36,9 +36,8 @@ export default function Workers() {
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => {
-  loadWorkers();
-}, [categoryId, availableOnly, location, loadWorkers]); 
+// eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => { loadWorkers(); }, [categoryId, availableOnly, location]);
 
   const handleBookClick = (worker) => {
     if (!user) {
