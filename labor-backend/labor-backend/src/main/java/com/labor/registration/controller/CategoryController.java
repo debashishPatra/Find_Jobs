@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "https://find-job-search.vercel.app", allowCredentials = "true")
+@CrossOrigin(origins = "https://find-job-search.vercel.app")
 @RestController
 @RequestMapping("/categories")
 @RequiredArgsConstructor
