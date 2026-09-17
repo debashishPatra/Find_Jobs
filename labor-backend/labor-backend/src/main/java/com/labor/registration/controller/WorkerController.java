@@ -1,5 +1,6 @@
 package com.labor.registration.controller;
 
+import com.labor.registration.dto.RegisterRequest;
 import com.labor.registration.dto.WorkerResponse;
 import com.labor.registration.dto.WorkerUpdateRequest;
 import com.labor.registration.service.WorkerService;
