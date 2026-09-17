@@ -1,6 +1,4 @@
 package com.labor.registration.controller;
-
-import com.labor.registration.dto.RegisterRequest;
 import com.labor.registration.dto.WorkerResponse;
 import com.labor.registration.dto.WorkerUpdateRequest;
 import com.labor.registration.service.WorkerService;
@@ -18,12 +16,6 @@ import java.util.Map;
 public class WorkerController {
 
     private final WorkerService workerService;
-
-     @PostMapping
-    public ResponseEntity<WorkerResponse> registerWorker(@RequestBody WorkerRequest request) {
-        // Assuming your workerService has a register method that returns WorkerResponse
-        return ResponseEntity.ok(workerService.register(request)); 
-    }
 
     @GetMapping
     public ResponseEntity<List<WorkerResponse>> search(
