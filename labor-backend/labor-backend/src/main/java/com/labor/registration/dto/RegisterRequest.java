@@ -1,5 +1,6 @@
 package com.labor.registration.dto;
 
+import com.labor.registration.dto.RegisterRequest;
 import com.labor.registration.entity.PriceUnit;
 import com.labor.registration.entity.Role;
 import lombok.Data;
