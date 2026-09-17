@@ -72,41 +72,6 @@ public class WorkerService {
         worker.setAvailable(available);
         return toResponse(workerRepository.save(worker));
     }
-   
-        public WorkerResponse register(RegisterRequest request) {
-        // 1. Create the base User entity (since Worker links to a User record)
-        User user = new User();
-        user.setFullName(request.getFullName());
-        user.setEmail(request.getEmail());
-        user.setPhone(request.getPhone());
-        user.setPassword(request.getPassword()); // Wrap with your password encoder if Spring Security is active
-        user.setRole(request.getRole());
-
-        // 2. Create the Worker entity
-        Worker worker = new Worker();
-        worker.setUser(user); // Link the newly created User to this Worker profile
-        worker.setAvailable(true); // Default to available on registration
-
-        // 3. Populate Worker specific columns if the role is matching
-        if (com.labor.registration.entity.Role.WORKER.equals(request.getRole())) {
-            worker.setPrice(request.getPrice());
-            worker.setPriceUnit(request.getPriceUnit());
-            worker.setExperienceYears(request.getExperienceYears());
-            worker.setLocation(request.getLocation());
-            worker.setDescription(request.getDescription());
-
-            if (request.getCategoryId() != null) {
-                Category category = categoryRepository.findById(request.getCategoryId())
-                        .orElseThrow(() -> new IllegalArgumentException("Invalid categoryId"));
-                worker.setCategory(category);
-            }
-        }
-
-        // 4. Save to database and convert the result using your existing helper method
-        Worker savedWorker = workerRepository.save(worker);
-        return toResponse(savedWorker);
-    }
-
     
     private WorkerResponse toResponse(Worker w) {
         return WorkerResponse.builder()
