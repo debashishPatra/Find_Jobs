@@ -11,12 +11,18 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "https://find-job-search-a9ztqbrna-findjob1.vercel.app", allowCredentials = "true")    
+@CrossOrigin(origins = "https://find-job-search.vercel.app", allowCredentials = "true")    
 @RequestMapping("/api/workers")
 @RequiredArgsConstructor
 public class WorkerController {
 
     private final WorkerService workerService;
+
+     @PostMapping
+    public ResponseEntity<WorkerResponse> registerWorker(@RequestBody WorkerRequest request) {
+        // Assuming your workerService has a register method that returns WorkerResponse
+        return ResponseEntity.ok(workerService.register(request)); 
+    }
 
     @GetMapping
     public ResponseEntity<List<WorkerResponse>> search(
